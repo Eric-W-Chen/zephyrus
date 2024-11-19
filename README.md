@@ -52,22 +52,21 @@ Files:
    ```bash
    git clone https://github.com/yourusername/zephyrus-challenge.git
    cd zephyrus-challenge
-   Open the task4-interactive-feature.html file in your browser to view the interactive feature.
    ```
 
 2. Open the task4-interactive-feature.html file in your browser to view the interactive feature.
 
 3. To test the JavaScript files for Tasks 1, 2, and 3:
 
-Use any JavaScript runtime environment like Node.js:
+   Use any JavaScript runtime environment like Node.js:
 
-```bash
-node task1-reverse-string.js
-node task2-fizzbuzz.js
-node task3-even-or-odd.js
-```
+   ```bash
+   node task1-reverse-string.js
+   node task2-fizzbuzz.js
+   node task3-even-or-odd.js
+   ```
 
-Alternatively, you can include the JavaScript files in an HTML file and open it in a browser.
+   Alternatively, you can include the JavaScript files in an HTML file and open it in a browser.
 
 ## Contact
 

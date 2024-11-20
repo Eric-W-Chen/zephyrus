@@ -317,10 +317,10 @@ footer {
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-30px);
+    transform: translateY(-3rem);
   }
   60% {
-    transform: translateY(-15px);
+    transform: translateY(-1.5rem);
   }
 }
 
@@ -332,11 +332,11 @@ footer {
   }
   20%,
   60% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
   40%,
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 }
 

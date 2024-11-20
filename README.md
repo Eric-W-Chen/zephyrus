@@ -41,8 +41,8 @@ A small HTML page with:
 
 Files:
 
-- `task4-interactive-feature.html` (HTML)
-- `task4-interactive-feature.js` (JavaScript)
+- `index.html` (HTML)
+- `script.js` (JavaScript)
 - `styles.css` (CSS)
 
 ## How to Run
@@ -51,10 +51,10 @@ Files:
 
    ```bash
    git clone https://github.com/yourusername/zephyrus-challenge.git
-   cd zephyrus-challenge
+   cd zephyrus
    ```
 
-2. Open the task4-interactive-feature.html file in your browser to view the interactive feature.
+2. Open the ./task4/index.html file in your browser to view the interactive feature.
 
 3. To test the JavaScript files for Tasks 1, 2, and 3:
 

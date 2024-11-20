@@ -1,0 +1,347 @@
+/*
+TYPOGRAPHY SYSTEM: 
+ - Font Size System (px)
+    10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font Weights:
+  Default: 400
+  Medium: 500
+  Semi-bold: 600
+  Bold: 700
+
+- Line Heights:
+  Small: 1.4
+  Paragraph Default: 1.7
+  Large: 1.8
+
+- Letter Spacing:
+  0.5
+  0.75
+
+SHADOWS:
+box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.2)
+box-shadow: 0 0.6rem 0.8rem rgba(0, 0, 0, 0.3);
+
+BORDER-RADIUS:
+Small: 6px
+Default: 9px
+Medium: 11px
+
+WHITESPACE
+- Spacing System (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128 
+*/
+
+/* Setting typography variables */
+:root {
+  --color-primary-darker: #2b8a3e;
+  --color-primary: #2f9e44;
+  --color-primary-lighter: #51cf66;
+
+  --color-secondary-darker: #ced4da;
+  --color-secondary: #dee2e6;
+  --color-secondary-lighter: #e9ecef;
+
+  --color-grey-light: #868e96;
+  --color-grey: #505050;
+
+  --default-font-size: 1.6rem;
+  --default-font-family: "Afacad Flux", sans-serif;
+
+  --border-radius-small: 0.6rem;
+  --border-radius: 0.9rem;
+  --border-radius-med: 1.1rem;
+
+  --line-height-small: 1.4;
+  --line-height: 1.7;
+
+  --box-shadow-lift: 0 0.6rem 1rem rgba(0, 0, 0, 0.2);
+  --box-shadow-press: 0 0.6rem 0.8rem rgba(0, 0, 0, 0.3);
+
+  --default-letter-spacing: 0.5px;
+  --letter-spacing-large: 0.75px;
+}
+
+/* Universal Reset & Base Styles */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* Setting a scalable base font size (1rem = 10px) for easier calculations */
+html {
+  font-size: 62.5%;
+}
+
+/* Base styles for body: font, layout, and background */
+body {
+  box-sizing: border-box;
+  font-family: var(--default-font-family);
+  font-weight: 400;
+  font-size: var(--default-font-size);
+  line-height: var(--line-height);
+  color: var(--color-grey);
+  letter-spacing: var(--default-letter-spacing);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: linear-gradient(to bottom, #f0f4ff, #e6edf9);
+  min-height: 100vh;
+}
+
+/* Group main content for formatting */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 2.5rem;
+  gap: 3rem;
+  flex: 1; /* Allows direct children of main to take up as much vertical space as possible while the header and footer remain fixed in height. */
+}
+
+/* Main heading styles */
+header h1 {
+  font-size: 5rem;
+  text-align: center;
+  margin: 12rem 0 4rem 0;
+  font-weight: 700; /* Bold for emphasis */
+  letter-spacing: var(--letter-spacing-large);
+}
+
+/* Summary text styling for introduction paragraph */
+.summary {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Styling for the control section (color and animation options) */
+.controls {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem; /* Increase spacing between color and animation sections */
+}
+
+/* Styling for unordered lists used in color and animation options */
+ul {
+  display: flex;
+  flex-wrap: wrap; /* Ensure list items wrap if needed */
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+/* List item base styling */
+li {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.6rem; /* Matches body font size */
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Styling for the 'none' option to visually differentiate it */
+li.none {
+  color: var(--color-grey-light);
+}
+
+li:focus {
+  outline: 2px solid var(--color-primary-lighter);
+}
+
+/* Hover effect for list items */
+li:hover {
+  background-color: var(--color-primary-darker);
+  transform: scale(1.1);
+  box-shadow: var(--box-shadow-lift);
+}
+
+li:active {
+  transform: scale(1);
+  box-shadow: var(--box-shadow-press);
+}
+
+/* Styling for selected list items */
+li.selected {
+  background-color: var(--color-primary);
+  color: var(--color-secondary-lighter);
+  font-weight: 700;
+  border: 2px solid var(--color-primary-darker);
+}
+
+/* CTA section */
+.cta {
+  margin-top: 3rem; /* Add spacing between controls and buttons */
+}
+
+/* Buttons */
+/* Button container for aligning apply and reset buttons */
+.btn-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Base button styling */
+.btn {
+  padding: 2rem 3.4rem;
+  font-size: 1.8rem;
+  background-color: var(--color-primary-darker);
+  color: var(--color-secondary-lighter);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:focus {
+  outline: 2px solid var(--color-primary-lighter);
+}
+
+/* Hover and active states for buttons */
+.btn:hover {
+  background-color: var(--color-primary);
+  transform: scale(1.05);
+  box-shadow: var(--box-shadow-lift);
+}
+
+.btn:active {
+  transform: scale(0.95);
+  box-shadow: var(--box-shadow-press);
+}
+
+/* Hover state specifically for reset button */
+.reset-btn:hover {
+  background-color: #a02020;
+}
+
+/* Footer */
+/* Styling for footer text */
+footer {
+  margin-top: auto;
+  font-size: 1.4rem;
+}
+
+/* Adjust for smaller screens (e.g., less than 600px width) */
+@media only screen and (max-width: 37.5em) {
+  body {
+    font-size: 1.4rem; /* Maintain a readable font size */
+    padding: 2.5rem; /* Adjust padding for better edge spacing */
+  }
+
+  main {
+    gap: 1rem;
+  }
+
+  header h1 {
+    font-size: 3.5rem; /* Scale down the header slightly */
+    margin: 0 2.5rem;
+  }
+
+  .summary {
+    font-size: 1.5rem; /* Ensure text remains legible */
+    margin-bottom: 2rem; /* Adjust spacing below summary */
+    line-height: var(
+      --line-height-small
+    ); /* Tweak line spacing for readability */
+  }
+
+  ul {
+    gap: 1.2rem; /* Increase gap for better spacing on smaller screens */
+    justify-content: center; /* Ensure list items are centered */
+  }
+
+  li {
+    font-size: 1.5rem; /* Adjust list item font size */
+    padding: 0.8rem 1.2rem; /* Shrink padding for smaller touch targets */
+  }
+
+  .controls {
+    gap: 2rem; /* Tighten spacing between color and animation sections */
+  }
+
+  .cta {
+    margin-top: 2.5rem; /* Reduce gap between controls and buttons */
+  }
+
+  .btn-container {
+    flex-direction: column;
+    gap: 2rem; /* Adjust spacing between buttons */
+    justify-content: center; /* Center buttons horizontally */
+  }
+
+  .btn {
+    font-size: 1.8rem; /* Slightly shrink button text size */
+    padding: 2rem 4rem; /* Reduce padding for smaller buttons */
+  }
+
+  footer {
+    margin-top: 2rem; /* Adjust margin for footer placement */
+  }
+}
+
+/* Animations */
+
+/* Keyframes for bounce animation */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Keyframes for shake animation */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-10px);
+  }
+  40%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+/* Keyframes for fade animation */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animation utility classes */
+.animate-bounce {
+  animation: bounce 1s ease;
+}
+.animate-shake {
+  animation: shake 1s ease;
+}
+.animate-fade {
+  animation: fade 1s ease;
+}

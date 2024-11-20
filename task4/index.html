@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Feature</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Main heading for the demo page -->
+    <header>
+      <h1 class="main-heading">Zephyrus Engineering</h1>
+    </header>
+    <main>
+      <!-- Summary section explaining the interactive feature -->
+      <section class="summary">
+        <p>
+          Welcome to Eric Chen's interactive demo page! This page showcases
+          dynamic DOM manipulation using JavaScript, allowing users to customize
+          the appearance and animations of the main heading. Explore different
+          color palettes and animation effects to see them in action!
+        </p>
+      </section>
+
+      <!-- Control section so user can interact with color and animation selections -->
+      <section class="controls">
+        <h2>Choose a Color</h2>
+        <ul class="color-list">
+          <li class="color" data-type="blue">Blue</li>
+          <li class="color" data-type="red">Red</li>
+          <li class="color" data-type="green">Green</li>
+          <li class="color none" data-type="none">None</li>
+        </ul>
+
+        <h2>Choose an Animation</h2>
+        <ul class="animation-list">
+          <li class="animation" data-type="bounce">Bounce</li>
+          <li class="animation" data-type="shake">Shake</li>
+          <li class="animation" data-type="fade">Fade</li>
+          <li class="animation none" data-type="none">None</li>
+        </ul>
+      </section>
+
+      <!-- Call to action section -->
+      <section class="cta">
+        <div class="btn-container">
+          <button
+            class="btn apply-btn"
+            aria-label="Apply your selected color and animation"
+          >
+            Apply Combination
+          </button>
+          <button
+            class="btn reset-btn"
+            aria-label="Reset the heading styles and clear selections"
+          >
+            Reset
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Eric Chen. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

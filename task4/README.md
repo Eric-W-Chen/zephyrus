@@ -137,6 +137,17 @@ Note: The img folder contains the project favicon (ec-favicon-white.png), used f
 - Buttons and list items provide feedback using hover effects, such as scaling and shadows.
 - **Active States**: Designed to be visually distinct, clearly indicating interaction.
 
+#### Performance Considerations
+
+- **Event Delegation**: Click events are delegated to the parent containers to reduce the number of event listeners.
+- **Efficient DOM Manipulation**: The `animationend` listener removes classes dynamically to avoid unnecessary reflows and repaints.
+
+#### Accessibility Features
+
+- **Responsive Typography**: Font sizes and spacing adjust based on the user's base font size.
+- **Feedback with `aria-live`**: Feedback messages are announced to screen readers without interrupting the user.
+- **Keyboard Navigation**: Buttons and options are accessible via keyboard focus.
+
 ### Conclusion
 
 This project showcases a thoughtful combination of modern CSS and JavaScript techniques to create a highly interactive and accessible web page. Challenges like animation resetting, state management, and responsiveness were resolved using scalable and efficient solutions. The result is a polished, user-friendly demo that adapts seamlessly across devices.

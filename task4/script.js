@@ -1,16 +1,24 @@
 const heading = document.querySelector(".main-heading");
 const colorList = document.querySelector(".color-list");
 const animationList = document.querySelector(".animation-list");
+const defaultColor = document.querySelector(".color.none");
+const defaultAnimation = document.querySelector(".animation.none");
 const applyBtn = document.querySelector(".apply-btn");
 const resetBtn = document.querySelector(".reset-btn");
+const feedbackContainer = document.querySelector(".feedback");
+
+let feedbackTimeout;
 
 // Constants for default styles
 const DEFAULT_COLOR = "#505050";
-const ANIMATION_CLASSES = ["animate-bounce", "animate-shake", "animate-fade"];
-const COLORS = {
-  blue: "#2a71d0",
-  red: "#d02a2a",
-  green: "#2ad02a",
+
+const SETTINGS = {
+  colors: {
+    blue: "#2a71d0",
+    red: "#d02a2a",
+    green: "#2ad02a",
+  },
+  animations: ["animate-bounce", "animate-shake", "animate-fade"],
 };
 
 const selectedTypes = {
@@ -22,6 +30,7 @@ const selectedTypes = {
  * Updates the 'selected' class for a clicked element within a parent container.
  * @param {HTMLElement} target - The clicked element.
  * @param {string} parentSelector - The parent container selector.
+ * @returns {void}
  */
 function updateSelected(target, parentSelector) {
   const parent = document.querySelector(parentSelector);
@@ -37,29 +46,70 @@ function updateSelected(target, parentSelector) {
 }
 
 /**
- * Resets the heading styles
+ * Resets the heading styles to the default state, including color and animations.
+ * Clears the `selectedTypes` object and removes any applied animation classes.
+ *
+ * @returns {void}
  */
 function resetHeading() {
   selectedTypes.color = null;
   selectedTypes.animation = null;
   heading.style.color = DEFAULT_COLOR;
-  heading.classList.remove(...ANIMATION_CLASSES);
+  heading.classList.remove(...SETTINGS.animations);
 }
 
 /**
- * Applies the selected color to the header
+ * Displays a feedback message in the feedback container.
+ * Replaces any existing message and removes it after a delay.
+ *
+ * @param {string} message - The feedback message to display.
+ *
+ * @returns {void}
+ */
+function showFeedback(message) {
+  // Clear any existing timeout
+  if (feedbackTimeout) clearTimeout(feedbackTimeout);
+
+  // Update the feedback message
+  feedbackContainer.textContent = message;
+
+  // Remove the feedback message after 3 seconds
+  feedbackTimeout = setTimeout(() => {
+    feedbackContainer.textContent = "";
+  }, 3000);
+}
+
+/**
+ * Hides the feedback message in the feedback container immediately after user makes a selection.
+ * Clears any existing timeout to prevent delayed removal of feedback.
+ *
+ * @returns {void}
+ */
+function hideFeedback() {
+  if (feedbackTimeout) clearTimeout(feedbackTimeout);
+  feedbackContainer.textContent = "";
+}
+
+/**
+ * Applies the selected color to the heading element.
+ * If no color is selected, the default color is used.
+ *
+ * @returns {void}
  */
 function applyColor() {
   heading.style.color = selectedTypes.color
-    ? COLORS[selectedTypes.color]
+    ? SETTINGS.colors[selectedTypes.color]
     : DEFAULT_COLOR;
 }
 
 /**
- * Applies the selected animation to the header
+ * Applies the selected animation to the heading element.
+ * If no animation is selected, no animation is applied. Automatically removes the animation class after it completes.
+ *
+ * @returns {void}
  */
 function applyAnimation() {
-  heading.classList.remove(...ANIMATION_CLASSES);
+  heading.classList.remove(...SETTINGS.animations);
 
   if (selectedTypes.animation) {
     const animationClass = `animate-${selectedTypes.animation}`;
@@ -77,10 +127,42 @@ function applyAnimation() {
 }
 
 /**
- * Event handler to update the currently selected color and/or animation
- * @param {Object} e - The event object
- * @param {string} parentSelector - The parent container selector.
- * @param {string} type - Either color or animation type
+ * Applies the selected color and animation to the heading element.
+ * If no valid selections are made, provides user feedback.
+ *
+ * @returns {void}
+ */
+function applySelection() {
+  const isColorNone = selectedTypes.color === null;
+  const isAnimationNone = selectedTypes.animation === null;
+
+  // If both are none, provide feedback but suppress the message if "none" is explicitly selected
+  if (isColorNone && isAnimationNone) {
+    const colorSelected = colorList.querySelector(".selected");
+    const animationSelected = animationList.querySelector(".selected");
+
+    // Check if the user explicitly selected "none" for both
+    if (
+      colorSelected?.getAttribute("data-type") !== "none" &&
+      animationSelected?.getAttribute("data-type") !== "none"
+    ) {
+      showFeedback("Please select either a color or animation!");
+      return;
+    }
+  }
+
+  applyColor();
+  applyAnimation();
+}
+
+/**
+ * Event handler to update the currently selected color and/or animation.
+ * Updates the `selectedTypes` object and highlights the clicked element.
+ *
+ * @param {Object} e - The event object from the click event.
+ * @param {string} parentSelector - CSS selector for the parent container of the elements.
+ * @param {string} type - The type of selection ('color' or 'animation').
+ * @returns {void}
  */
 function handleSelection(e, parentSelector, type) {
   const target = e.target;
@@ -94,6 +176,24 @@ function handleSelection(e, parentSelector, type) {
   selectedTypes[type] = selectedType === "none" ? null : selectedType;
 
   updateSelected(target, parentSelector);
+
+  // Hide feedback after a valid selection
+  hideFeedback();
+}
+
+/**
+ * Sets default selections to "none" for both color and animation options.
+ * This visually highlights the default state for the user.
+ *
+ * @returns {void}
+ */
+function setDefaultSelections() {
+  if (defaultColor) {
+    updateSelected(defaultColor, ".color-list");
+  }
+  if (defaultAnimation) {
+    updateSelected(defaultAnimation, ".animation-list");
+  }
 }
 
 // Selecting color
@@ -108,16 +208,15 @@ animationList.addEventListener("click", (e) =>
 
 // Apply selected combination
 applyBtn.addEventListener("click", () => {
-  applyColor();
-  applyAnimation();
+  applySelection();
 });
 
-// Reset color and animation
+// Reset color, animation, and selections
 resetBtn.addEventListener("click", () => {
   resetHeading();
   document
     .querySelectorAll(".selected")
     .forEach((el) => el.classList.remove("selected"));
-  selectedTypes.color = null;
-  selectedTypes.animation = null;
 });
+
+setDefaultSelections();

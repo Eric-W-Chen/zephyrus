@@ -45,6 +45,8 @@ WHITESPACE
   --color-grey-light: #868e96;
   --color-grey: #505050;
 
+  --color-red: #a02020;
+
   --default-font-size: 1.6rem;
   --default-font-family: "Afacad Flux", sans-serif;
 
@@ -60,6 +62,10 @@ WHITESPACE
 
   --default-letter-spacing: 0.5px;
   --letter-spacing-large: 0.75px;
+
+  --font-weight: 400;
+  --font-weight-semi: 600;
+  --font-weight-bold: 700;
 }
 
 /* Universal Reset & Base Styles */
@@ -80,7 +86,7 @@ html {
 body {
   box-sizing: border-box;
   font-family: var(--default-font-family);
-  font-weight: 400;
+  font-weight: var(--font-weight);
   font-size: var(--default-font-size);
   line-height: var(--line-height);
   color: var(--color-grey);
@@ -110,7 +116,7 @@ header h1 {
   font-size: 5rem;
   text-align: center;
   margin: 12rem 0 4rem 0;
-  font-weight: 700; /* Bold for emphasis */
+  font-weight: var(--font-weight-bold); /* Bold for emphasis */
   letter-spacing: var(--letter-spacing-large);
 }
 
@@ -175,7 +181,7 @@ li:active {
 li.selected {
   background-color: var(--color-primary);
   color: var(--color-secondary-lighter);
-  font-weight: 700;
+  font-weight: var(--font-weight-semi);
   border: 2px solid var(--color-primary-darker);
 }
 
@@ -222,7 +228,16 @@ li.selected {
 
 /* Hover state specifically for reset button */
 .reset-btn:hover {
-  background-color: #a02020;
+  background-color: var(--color-red);
+}
+
+.feedback {
+  text-align: center;
+  color: var(--color-red);
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  margin: 1rem 1rem; /* Space between buttons and feedback message */
+  height: 2rem; /* Fixed height to prevent layout shifting */
 }
 
 /* Footer */

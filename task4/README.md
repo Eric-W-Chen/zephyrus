@@ -90,6 +90,7 @@ function resetHeading() {
 #### Refactoring with Objects
 
 A `selectedTypes` object centralizes the state for both color and animation, replacing individual variables (e.g., `selectedColor`, `selectedAnimation`) for better scalability and simplicity.
+A `SETTINGS` object centralizes the selections for both color and animation, replacing individual variables (e.g., `ANIMATION_CLASSES`, `COLORS`) for better scaling and simplicity.
 
 ### Challenges and Solutions
 

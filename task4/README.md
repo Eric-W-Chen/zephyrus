@@ -106,7 +106,7 @@ A `selectedTypes` object centralizes the state for both color and animation, rep
 #### Responsiveness
 
 - **Challenge**: Ensuring the page looked great on all screen sizes without hardcoding breakpoints.
-- **Solution**: Used `em` units in media queries and `flex` for layout, allowing the design to scale naturally with the user's base font size.
+- **Solution**: Used `em` units in media queries, `rem` units for root sizing, and `flex` for layout, allowing the design to scale naturally with the user's base font size.
 
 ### Folder Structure
 

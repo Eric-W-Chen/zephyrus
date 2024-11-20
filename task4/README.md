@@ -117,6 +117,8 @@ A `selectedTypes` object centralizes the state for both color and animation, rep
 |-- script.js    # JavaScript for dynamic interactivity
 ```
 
+Note: The img folder contains the project favicon (ec-favicon-white.png), used for browser tab branding.
+
 ### Design Choices
 
 #### Color Palette

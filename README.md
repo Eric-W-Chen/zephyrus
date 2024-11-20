@@ -45,6 +45,8 @@ Files:
 - `script.js` (JavaScript)
 - `styles.css` (CSS)
 
+Note: The img folder inside of the task4 directory contains the project favicon (ec-favicon-white.png), used for browser tab branding.
+
 ## How to Run
 
 1. Clone the repository:

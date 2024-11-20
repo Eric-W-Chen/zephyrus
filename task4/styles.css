@@ -205,7 +205,7 @@ li.selected {
 }
 
 .btn:focus {
-  outline: 2px solid var(--color-primary-lighter);
+  outline: 2px solid var(--color-primary);
 }
 
 /* Hover and active states for buttons */
